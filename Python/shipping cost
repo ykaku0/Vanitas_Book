@@ -1,0 +1,37 @@
+def groundshipping(weight):
+  flatrate=20
+  if weight <2:
+    cost=flatrate+1.5*weight
+  elif weight<=6:
+    cost=flatrate+3*weight
+  elif weight<=10:
+    cost = flatrate + 4*weight
+  else:
+    cost=flatrate+4.75*weight
+  return cost
+
+PremiumGroundShippingCost=125
+
+def droneshipping(weight):
+  flatrate=0
+  if weight <2:
+    cost=flatrate+4.5*weight
+  elif weight<=6:
+    cost=flatrate+9*weight
+  elif weight<=10:
+    cost = flatrate + 12*weight
+  else:
+    cost=flatrate+14.25*weight
+  return cost
+print(droneshipping(1.5))
+
+def compareprice(weight):
+  if PremiumGroundShippingCost<groundshipping(weight)and PremiumGroundShippingCost<droneshipping(weight):
+    return 'Premium Ground Shipping of '+ str(PremiumGroundShippingCost)+' is the cheapest'
+  elif groundshipping(weight)<droneshipping(weight):
+    return 'Ground Shipping of ' + str(groundshipping(weight)) + ' is the cheapest'
+  else:
+    return 'Drone Shipping of ' + str(droneshipping(weight)) + ' is the cheapest'
+  
+print(compareprice(4.8))
+print(compareprice(41.5))
